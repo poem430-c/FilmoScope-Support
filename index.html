@@ -1,0 +1,569 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>FilmoScope — Support &amp; Privacy</title>
+  <meta name="description" content="FilmoScope support, how-to guide, developer details, and privacy policy." />
+  <link rel="icon" href="assets/favicon.png" type="image/png" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Life+Savers&family=Montserrat:wght@300;400;500;600&family=Roboto+Slab:wght@300;400&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --bg: #212121;
+      --bg-deep: #1a1a1a;
+      --logo: #d9d9d9;
+      --muted: #565656;
+      --text: #ffffff;
+      --soft: #c0c0c0;
+      --line: rgba(217, 217, 217, 0.14);
+      --max: 720px;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: "Montserrat", sans-serif;
+      font-weight: 400;
+      background:
+        radial-gradient(ellipse 80% 50% at 50% -10%, rgba(217, 217, 217, 0.06), transparent 55%),
+        var(--bg);
+      color: var(--text);
+      line-height: 1.65;
+      min-height: 100vh;
+    }
+
+    a { color: var(--logo); text-decoration: underline; text-underline-offset: 3px; }
+    a:hover { color: var(--text); }
+
+    .wrap {
+      width: min(100% - 2.5rem, var(--max));
+      margin: 0 auto;
+    }
+
+    header {
+      padding: 1.25rem 0 0;
+      border-bottom: 1px solid var(--line);
+      background: rgba(33, 33, 33, 0.92);
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      backdrop-filter: blur(8px);
+    }
+
+    .nav-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+      padding-bottom: 1rem;
+      flex-wrap: wrap;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      text-decoration: none;
+      color: var(--text);
+    }
+
+    .brand img {
+      width: 40px;
+      height: 40px;
+      object-fit: contain;
+    }
+
+    .brand-name {
+      font-family: "Life Savers", cursive;
+      font-size: 1.35rem;
+      letter-spacing: 0.02em;
+    }
+
+    nav {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.35rem 1.1rem;
+      font-size: 0.78rem;
+      font-weight: 500;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+    }
+
+    nav a {
+      color: var(--soft);
+      text-decoration: none;
+    }
+
+    nav a:hover { color: var(--text); }
+
+    .hero {
+      text-align: center;
+      padding: 4.5rem 0 3.5rem;
+    }
+
+    .hero-logo {
+      width: min(180px, 55vw);
+      height: auto;
+      margin: 0 auto 1.25rem;
+      display: block;
+      filter: brightness(0) invert(0.85);
+    }
+
+    .hero h1 {
+      font-family: "Life Savers", cursive;
+      font-size: clamp(2rem, 6vw, 2.75rem);
+      font-weight: 400;
+      color: var(--text);
+    }
+
+    .hero .tag {
+      margin-top: 0.35rem;
+      font-family: ui-monospace, Menlo, Consolas, monospace;
+      font-size: 0.72rem;
+      letter-spacing: 0.12em;
+      color: var(--soft);
+      text-transform: uppercase;
+    }
+
+    .hero p {
+      margin: 1.25rem auto 0;
+      max-width: 34rem;
+      font-weight: 300;
+      color: var(--soft);
+      font-size: 0.98rem;
+    }
+
+    section {
+      padding: 2.75rem 0;
+      border-top: 1px solid var(--line);
+    }
+
+    section h2 {
+      font-family: "Roboto Slab", serif;
+      font-weight: 300;
+      font-size: 1.35rem;
+      margin-bottom: 1rem;
+      color: var(--text);
+    }
+
+    section h3 {
+      font-family: "Roboto Slab", serif;
+      font-weight: 400;
+      font-size: 1rem;
+      margin: 1.5rem 0 0.5rem;
+      color: var(--logo);
+    }
+
+    section p,
+    section li {
+      font-weight: 300;
+      color: var(--soft);
+      font-size: 0.95rem;
+    }
+
+    section p + p { margin-top: 0.85rem; }
+
+    ul {
+      margin: 0.75rem 0 0 1.15rem;
+    }
+
+    li { margin: 0.35rem 0; }
+
+    .menu-list {
+      list-style: none;
+      margin: 1rem 0 0;
+      padding: 0;
+      display: grid;
+      gap: 0.65rem;
+    }
+
+    .menu-list li {
+      display: grid;
+      grid-template-columns: 7.5rem 1fr;
+      gap: 0.75rem;
+      padding: 0.85rem 1rem;
+      background: var(--bg-deep);
+      border: 1px solid var(--line);
+    }
+
+    .menu-list strong {
+      font-family: "Roboto Slab", serif;
+      font-weight: 400;
+      color: var(--text);
+      font-size: 0.88rem;
+    }
+
+    .video-box {
+      margin-top: 1.25rem;
+      background: var(--bg-deep);
+      border: 1px solid var(--line);
+      aspect-ratio: 16 / 9;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .video-box iframe,
+    .video-box video {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      border: 0;
+      display: block;
+      background: #000;
+    }
+
+    .video-placeholder {
+      position: absolute;
+      inset: 0;
+      display: grid;
+      place-content: center;
+      text-align: center;
+      padding: 1.5rem;
+      color: var(--muted);
+      font-size: 0.85rem;
+      font-weight: 400;
+      gap: 0.5rem;
+    }
+
+    .video-placeholder span {
+      display: block;
+      font-family: ui-monospace, Menlo, Consolas, monospace;
+      font-size: 0.7rem;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+    }
+
+    .note {
+      margin-top: 0.85rem;
+      font-size: 0.8rem;
+      color: var(--muted);
+    }
+
+    .card-grid {
+      display: grid;
+      gap: 0.75rem;
+      margin-top: 1rem;
+    }
+
+    .card {
+      padding: 1rem 1.1rem;
+      background: var(--bg-deep);
+      border: 1px solid var(--line);
+    }
+
+    .card dt {
+      font-family: "Roboto Slab", serif;
+      font-size: 0.82rem;
+      color: var(--logo);
+      margin-bottom: 0.25rem;
+    }
+
+    .card dd {
+      font-weight: 300;
+      color: var(--soft);
+      font-size: 0.92rem;
+    }
+
+    footer {
+      border-top: 1px solid var(--line);
+      padding: 2rem 0 2.5rem;
+      text-align: center;
+    }
+
+    footer p {
+      font-weight: 300;
+      font-size: 0.75rem;
+      color: var(--muted);
+    }
+
+    @media (max-width: 560px) {
+      .menu-list li {
+        grid-template-columns: 1fr;
+        gap: 0.25rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="wrap nav-row">
+      <a class="brand" href="#top">
+        <img src="assets/icon.png" alt="" width="40" height="40" />
+        <span class="brand-name">FilmoScope</span>
+      </a>
+      <nav aria-label="Page sections">
+        <a href="#about">About</a>
+        <a href="#guide">How to use</a>
+        <a href="#privacy">Privacy</a>
+        <a href="#developer">Developer</a>
+        <a href="#support">Support</a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="top">
+    <div class="wrap">
+      <div class="hero">
+        <img class="hero-logo" src="assets/logo.svg" alt="FilmoScope logo" />
+        <h1>FilmoScope</h1>
+        <p class="tag">SandBox</p>
+        <p>
+          Capture film frames, place them in album boxes, and keep everything on your device.
+          This page is the support hub, privacy policy, and developer contact for store submission.
+        </p>
+      </div>
+    </div>
+
+    <section id="about">
+      <div class="wrap">
+        <h2>About &amp; user menu</h2>
+        <p>
+          FilmoScope is a personal photography organiser. You photograph or import a film frame,
+          place it in an album box (half or full frame), switch the strip look between black &amp; white
+          and colour, mark a roll as developing or developed, and export a contact sheet when you want
+          a copy in Photos.
+        </p>
+        <ul class="menu-list">
+          <li>
+            <strong>Home</strong>
+            <span>Opens the app and takes you into your albums.</span>
+          </li>
+          <li>
+            <strong>Albums</strong>
+            <span>Browse album boxes and open one to view or edit frames.</span>
+          </li>
+          <li>
+            <strong>New album</strong>
+            <span>Create a new album box for a roll or set of frames.</span>
+          </li>
+          <li>
+            <strong>Camera</strong>
+            <span>Capture a frame in-app, or choose an existing photo from your library.</span>
+          </li>
+          <li>
+            <strong>Export</strong>
+            <span>Save a contact sheet to your Photos library when the album is Developed.</span>
+          </li>
+        </ul>
+
+        <h3>Developing &amp; Developed mode</h3>
+        <p>
+          Each album has a status badge you can tap to switch between
+          <strong style="color: var(--text); font-weight: 500;">Developing</strong>
+          and
+          <strong style="color: var(--text); font-weight: 500;">Developed</strong>.
+        </p>
+        <ul>
+          <li>
+            <strong style="color: var(--text); font-weight: 500;">Developing</strong>
+            — photos are covered (like a roll still in the lab). You cannot add, replace, delete,
+            or export frames while this mode is on.
+          </li>
+          <li>
+            <strong style="color: var(--text); font-weight: 500;">Developed</strong>
+            — photos are revealed. You can edit frames, add notes, fill in “Developed By”,
+            and export a contact sheet.
+          </li>
+        </ul>
+
+        <h3>Half frame &amp; full frame</h3>
+        <p>
+          When you create an album you choose the film density. The album badge shows
+          <strong style="color: var(--text); font-weight: 500;">Half Film</strong>
+          or
+          <strong style="color: var(--text); font-weight: 500;">Full Film</strong>.
+        </p>
+        <ul>
+          <li>
+            <strong style="color: var(--text); font-weight: 500;">Full Film</strong>
+            — one photo gate per film strip cell (classic full-frame layout).
+          </li>
+          <li>
+            <strong style="color: var(--text); font-weight: 500;">Half Film</strong>
+            — two photo gates side by side in each strip cell, for half-frame rolls.
+          </li>
+        </ul>
+
+        <h3>Frame colour</h3>
+        <p>
+          Tap the film strip (the sprocket frame around the photo gates) to change the frame look.
+          You can switch between a
+          <strong style="color: var(--text); font-weight: 500;">black &amp; white</strong>
+          strip and a
+          <strong style="color: var(--text); font-weight: 500;">colour</strong>
+          strip. Half-frame and full-frame albums each have matching B&amp;W and colour frame styles.
+        </p>
+      </div>
+    </section>
+
+    <section id="guide">
+      <div class="wrap">
+        <h2>How to use</h2>
+        <p>
+          Watch a short walkthrough of FilmoScope. Replace the placeholder below with your own
+          video when it is ready.
+        </p>
+
+        <!--
+          OPTION A — YouTube / Vimeo embed:
+          Delete the placeholder div and uncomment the iframe.
+          Replace VIDEO_ID with your video id.
+
+          <div class="video-box">
+            <iframe
+              src="https://www.youtube.com/embed/VIDEO_ID"
+              title="FilmoScope how to use"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+              allowfullscreen
+            ></iframe>
+          </div>
+        -->
+
+        <!--
+          OPTION B — Host a file in this folder (e.g. assets/demo.mp4):
+          Delete the placeholder and uncomment:
+
+          <div class="video-box">
+            <video controls playsinline poster="assets/icon.png">
+              <source src="assets/demo.mp4" type="video/mp4" />
+            </video>
+          </div>
+        -->
+
+        <div class="video-box" id="demo-video">
+          <div class="video-placeholder">
+            <span>Video placeholder</span>
+            Your demo goes here.<br />
+            Open <code>index.html</code> and follow the comments under “How to use”
+            to add a YouTube embed or an <code>assets/demo.mp4</code> file.
+          </div>
+        </div>
+        <p class="note">
+          Tip for App Store / Play Console: use this section URL —
+          <code>#guide</code> — as a marketing or support link that shows the walkthrough.
+        </p>
+      </div>
+    </section>
+
+    <section id="privacy">
+      <div class="wrap">
+        <h2>Privacy &amp; data collection</h2>
+        <p>
+          <strong style="color: var(--text); font-weight: 500;">Last updated:</strong>
+          6 September 2026
+        </p>
+        <p>
+          FilmoScope is built so your photos and album data stay on your device.
+          This policy describes what the app accesses and what it does <em>not</em> collect.
+        </p>
+
+        <h3>What we collect</h3>
+        <p>
+          We do <strong style="color: var(--text); font-weight: 500;">not</strong> collect,
+          upload, or sell personal data. There is no account system, no analytics SDK,
+          and no advertising network in FilmoScope.
+        </p>
+
+        <h3>Data stored on your device</h3>
+        <ul>
+          <li>Album names and layout you create in the app</li>
+          <li>Photos you capture or import, saved in the app’s local storage</li>
+          <li>Optional notes you attach to a frame (aperture, shutter, date, location text, remarks)</li>
+        </ul>
+        <p>
+          This information stays on your phone or tablet unless you export a contact sheet
+          or photo into your device Photos library yourself.
+        </p>
+
+        <h3>Permissions</h3>
+        <ul>
+          <li><strong style="color: var(--text); font-weight: 500;">Camera</strong> — to photograph a film frame</li>
+          <li><strong style="color: var(--text); font-weight: 500;">Photo library</strong> — to pick an existing image or save an export you request</li>
+        </ul>
+        <p>
+          Permissions are only used for those features. FilmoScope does not scan your library
+          in the background.
+        </p>
+
+        <h3>Third parties</h3>
+        <p>
+          FilmoScope does not send your photos or album data to our servers.
+          If you later enable a cloud backup from your device (iCloud, Google backup, etc.),
+          that is controlled by your device settings, not by FilmoScope.
+        </p>
+
+        <h3>Children</h3>
+        <p>
+          The app is not directed at children under 13. We do not knowingly collect
+          personal information from children.
+        </p>
+
+        <h3>Contact</h3>
+        <p>
+          Questions about privacy: see the
+          <a href="#developer">Developer</a> section below.
+        </p>
+      </div>
+    </section>
+
+    <section id="developer">
+      <div class="wrap">
+        <h2>Developer details</h2>
+        <p>Use these details in App Store Connect / Google Play Console.</p>
+        <dl class="card-grid">
+          <div class="card">
+            <dt>Developer / publisher</dt>
+            <dd>POEM430.c</dd>
+          </div>
+          <div class="card">
+            <dt>App name</dt>
+            <dd>FilmoScope</dd>
+          </div>
+          <div class="card">
+            <dt>Bundle ID (iOS)</dt>
+            <dd>com.poem430.filmoscope</dd>
+          </div>
+          <div class="card">
+            <dt>Package name (Android)</dt>
+            <dd>com.poem430.filmoscope</dd>
+          </div>
+          <div class="card">
+            <dt>Year</dt>
+            <dd>2026</dd>
+          </div>
+          <div class="card">
+            <dt>Contact email</dt>
+            <dd><a href="mailto:poemcode.c@gmail.com">poemcode.c@gmail.com</a></dd>
+          </div>
+        </dl>
+      </div>
+    </section>
+
+    <section id="support">
+      <div class="wrap">
+        <h2>Support</h2>
+        <p>
+          Need help with FilmoScope? Email the developer address above and include your
+          device model and OS version (for example iPhone 15 · iOS 18).
+        </p>
+        <p>
+          Common topics: camera permission, importing photos, half vs full frame albums,
+          switching B&amp;W / colour frames, Developing vs Developed mode, and exporting
+          a contact sheet.
+        </p>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="wrap">
+      <p>Created by POEM430.c · 2026</p>
+    </div>
+  </footer>
+</body>
+</html>

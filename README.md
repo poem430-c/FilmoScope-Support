@@ -18,17 +18,15 @@ This folder is **outside** the FilmoScope app project so it is not bundled when 
 
 ## Publish on GitHub Pages
 
-On a machine with Git and GitHub CLI:
+1. Create a public repo on GitHub named `FilmoScope-Support` (no README).
+2. In this folder, connect and push:
 
 ```bash
-cd "C:\Users\cc_wi\Documents\C\App Project\FilmoScope-Support-Site"
-git init
-git add .
-git commit -m "Add FilmoScope support and privacy page"
-gh repo create FilmoScope-Support --public --source=. --remote=origin --push
+git remote add origin https://github.com/YOUR_USERNAME/FilmoScope-Support.git
+git push -u origin main
 ```
 
-Then in the GitHub repo: **Settings → Pages → Source: Deploy from a branch → `main` / root**.
+3. In the GitHub repo: **Settings → Pages → Source: Deploy from a branch → `main` / root**.
 
 Your URLs will look like:
 

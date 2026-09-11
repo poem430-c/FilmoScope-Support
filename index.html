@@ -201,9 +201,10 @@
       font-size: 0.88rem;
     }
 
+    /* Landscape stage: portrait demo sits centered with side bars (letterbox). */
     .video-box {
       margin-top: 1.25rem;
-      background: var(--bg-deep);
+      background: #000;
       border: 1px solid var(--line);
       aspect-ratio: 16 / 9;
       position: relative;
@@ -221,25 +222,9 @@
       background: #000;
     }
 
-    .video-placeholder {
-      position: absolute;
-      inset: 0;
-      display: grid;
-      place-content: center;
-      text-align: center;
-      padding: 1.5rem;
-      color: var(--muted);
-      font-size: 0.85rem;
-      font-weight: 400;
-      gap: 0.5rem;
-    }
-
-    .video-placeholder span {
-      display: block;
-      font-family: ui-monospace, Menlo, Consolas, monospace;
-      font-size: 0.7rem;
-      letter-spacing: 0.06em;
-      text-transform: uppercase;
+    .video-box video {
+      object-fit: contain;
+      object-position: center;
     }
 
     .note {
@@ -330,6 +315,8 @@
         <p>
           FilmoScope opens two ways into the same quiet ritual: let the iPhone shoot like film,
           or let real film leave a digital trace you can keep.
+          The app is <strong style="color: var(--text); font-weight: 500;">iPhone-only</strong>
+          for now — iPad is not supported.
         </p>
         <p>
           Capture or import frames into album boxes. Choose a
@@ -500,43 +487,17 @@
           More detail is in <a href="#about">About</a> above.
         </p>
 
-        <!--
-          OPTION A — YouTube / Vimeo embed:
-          Delete the placeholder div and uncomment the iframe.
-          Replace VIDEO_ID with your video id.
-
-          <div class="video-box">
-            <iframe
-              src="https://www.youtube.com/embed/VIDEO_ID"
-              title="FilmoScope how to use"
-              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-              allowfullscreen
-            ></iframe>
-          </div>
-        -->
-
-        <!--
-          OPTION B — Host a file in this folder (e.g. assets/demo.mp4):
-          Delete the placeholder and uncomment:
-
-          <div class="video-box">
-            <video controls playsinline poster="assets/icon.png">
-              <source src="assets/demo.mp4" type="video/mp4" />
-            </video>
-          </div>
-        -->
-
         <div class="video-box" id="demo-video">
-          <div class="video-placeholder">
-            <span>App Demo</span>
-            To be updated... <br />
-          
-          </div>
+          <video
+            controls
+            playsinline
+            preload="metadata"
+            poster="assets/icon.png"
+            title="FilmoScope app demo"
+          >
+            <source src="assets/FilomScopeDemo_edit.mp4" type="video/mp4" />
+          </video>
         </div>
-        <!-- <p class="note">
-          Tip for App Store / Play Console: use this section URL —
-          <code>#guide</code> — as a marketing or support link that shows the walkthrough.
-        </p> -->
       </div>
     </section>
 
@@ -567,8 +528,8 @@
           <li>Optional free-text film notes for a roll (loaded film, settings, what comes next)</li>
         </ul>
         <p>
-          This information stays on your phone or tablet unless you export a contact sheet
-          or photo into your device Photos library yourself.
+          This information stays on your iPhone unless you export a contact sheet
+          or photo into your Photos library yourself.
         </p>
 
         <h3>Permissions</h3>
@@ -618,6 +579,10 @@
           <div class="card">
             <dt>Bundle ID (iOS)</dt>
             <dd>com.poemc.filmoscope</dd>
+          </div>
+          <div class="card">
+            <dt>Supported devices</dt>
+            <dd>iPhone only (iPad not supported)</dd>
           </div>
           <div class="card">
             <dt>Year</dt>
